@@ -64,6 +64,18 @@
     <Filter Include="Source Files\cl_dll\particleman">
       <UniqueIdentifier>{7085339d-2b33-4cdf-846c-0e4c7d33add8}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\hooks">
+      <UniqueIdentifier>{55a3b4fa-90de-4c0d-ae58-2426a7537b1c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\hawk">
+      <UniqueIdentifier>{00176e0d-6f08-4eeb-95d1-4e6556cf163b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\hawk\water">
+      <UniqueIdentifier>{2bc631a4-689d-4a29-ae10-3397b48c7667}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\hooks\water">
+      <UniqueIdentifier>{d32f6346-0b83-4b44-9fa1-581a1e0f4962}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\dlls\crossbow.cpp">
@@ -320,6 +332,27 @@
     </ClCompile>
     <ClCompile Include="..\..\cl_dll\particleman\CBaseParticle.cpp">
       <Filter>Source Files\cl_dll\particleman</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\cl_dll\funchook.cpp">
+      <Filter>Source Files\hawk</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\cl_dll\cmd_function.cpp">
+      <Filter>Source Files\hawk</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\cl_dll\hooks.cpp">
+      <Filter>Source Files\hawk</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\cl_dll\emitwaterpoly.cpp">
+      <Filter>Source Files\hawk\water</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\cl_dll\r_ripples.cpp">
+      <Filter>Source Files\hawk\water</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\cl_dll\gl_hooks.cpp">
+      <Filter>Source Files\hawk</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\cl_dll\cvar_hooks.cpp">
+      <Filter>Source Files\hawk</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -595,6 +628,33 @@
     </ClInclude>
     <ClInclude Include="..\..\cl_dll\particleman\CBaseParticle.h">
       <Filter>Header Files\cl_dll\particleman</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\cl_dll\sigscanner.h">
+      <Filter>Header Files\hooks</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\cl_dll\patterns.h">
+      <Filter>Header Files\hooks</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\cl_dll\r_turbsin.h">
+      <Filter>Header Files\hooks\water</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\cl_dll\gl_emitwaterpoly.h">
+      <Filter>Header Files\hooks\water</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\cl_dll\r_ripples.h">
+      <Filter>Header Files\hooks\water</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\cl_dll\hooks.h">
+      <Filter>Header Files\hooks</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\cl_dll\funchook_mgr.h">
+      <Filter>Header Files\hooks</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\cl_dll\gl_hooks.h">
+      <Filter>Header Files\hooks</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\cl_dll\cvar_hooks.h">
+      <Filter>Header Files\hooks</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

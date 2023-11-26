@@ -36,6 +36,9 @@
 #include "vgui_TeamFortressViewport.h"
 #include "filesystem_utils.h"
 
+#include "hooks.h"
+#include "r_ripples.h"
+
 cl_enginefunc_t gEngfuncs;
 CHud gHUD;
 TeamFortressViewport* gViewPort = NULL;
@@ -127,6 +130,8 @@ int DLLEXPORT Initialize(cl_enginefunc_t* pEnginefuncs, int iVersion)
 		return 0;
 	}
 
+	InitHooks();
+
 	// get tracker interface, if any
 	return 1;
 }
@@ -149,6 +154,8 @@ int DLLEXPORT HUD_VidInit()
 
 	VGui_Startup();
 
+	R_ResetRipples();
+
 	return 1;
 }
 
@@ -168,6 +175,8 @@ void DLLEXPORT HUD_Init()
 	InitInput();
 	gHUD.Init();
 	Scheme_Init();
+
+	R_InitRipples();
 }
 
 
@@ -185,6 +194,7 @@ int DLLEXPORT HUD_Redraw(float time, int intermission)
 	//	RecClHudRedraw(time, intermission);
 
 	gHUD.Redraw(time, 0 != intermission);
+	R_AnimateRipples();
 
 	return 1;
 }

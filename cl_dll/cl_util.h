@@ -22,6 +22,8 @@
 
 #include "Platform.h"
 
+#include "funchook_mgr.h"
+
 // Macros to hook function calls into the HUD object
 #define HOOK_MESSAGE(x) gEngfuncs.pfnHookUserMsg(#x, __MsgFunc_##x);
 
@@ -178,5 +180,17 @@ inline void UnpackRGB(int& r, int& g, int& b, unsigned long ulRGB)
 	g = (ulRGB & 0xFF00) >> 8;
 	b = ulRGB & 0xFF;
 }
-
 HSPRITE LoadSprite(const char* pszName);
+
+typedef void (*xcommand_t)();
+typedef struct cmd_function_s
+{
+	cmd_function_s* next;
+	const char* name;
+	xcommand_t function;
+	int flags;
+} cmd_function_t;
+
+cmd_function_s *GetCmdFunction(const char* pszName);
+
+extern void Sys_Error(const char* format, ...);

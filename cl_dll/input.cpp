@@ -21,6 +21,8 @@
 #include "vgui_TeamFortressViewport.h"
 #include "filesystem_utils.h"
 
+#include "hooks.h"
+
 
 extern bool g_iAlive;
 
@@ -1013,12 +1015,12 @@ void ShutdownInput()
 #include "interface.h"
 void CL_UnloadParticleMan();
 
-
 void DLLEXPORT HUD_Shutdown()
 {
 	//	RecClShutdown();
 
 	ShutdownInput();
+	ShutdownHooks();
 
 
 	FileSystem_FreeFileSystem();

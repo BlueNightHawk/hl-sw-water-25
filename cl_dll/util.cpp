@@ -25,6 +25,8 @@
 #include "cl_util.h"
 #include <string.h>
 
+#include "SDL.h"
+
 HSPRITE LoadSprite(const char* pszName)
 {
 	int i;
@@ -38,4 +40,20 @@ HSPRITE LoadSprite(const char* pszName)
 	sprintf(sz, pszName, i);
 
 	return SPR_Load(sz);
+}
+
+void Sys_Error(const char* format, ...)
+{
+	auto quitfunc = GetCmdFunction("quit");
+
+	va_list argptr;
+	static char string[1024];
+
+	va_start(argptr, format);
+	vsprintf(string, format, argptr);
+	va_end(argptr);
+
+	SDL_ShowSimpleMessageBox(SDL_MESSAGEBOX_ERROR, "Error in client", string, nullptr);
+
+	quitfunc->function();
 }

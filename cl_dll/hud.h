@@ -606,6 +606,8 @@ public:
 	void AddHudElem(CHudBase* p);
 
 	float GetSensitivity();
+
+	struct ref_params_s refparams;
 };
 
 extern CHud gHUD;

@@ -1,3 +1,12 @@
+Software Mode Water
+======================
+Updated for the latest post-25th anniversary build.
+Ported from Xash3D FWGS
+(Using Engine Hooks)
+Credits : Xash3D FWGS Team
+		  [Original pull request](https://github.com/FWGS/xash3d-fwgs/pull/1475)
+		  by [a1batross](https://github.com/a1batross)
+
 About
 ======================
 
