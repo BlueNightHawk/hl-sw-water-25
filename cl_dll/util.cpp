@@ -44,8 +44,6 @@ HSPRITE LoadSprite(const char* pszName)
 
 void Sys_Error(const char* format, ...)
 {
-	auto quitfunc = GetCmdFunction("quit");
-
 	va_list argptr;
 	static char string[1024];
 
@@ -55,5 +53,5 @@ void Sys_Error(const char* format, ...)
 
 	SDL_ShowSimpleMessageBox(SDL_MESSAGEBOX_ERROR, "Error in client", string, nullptr);
 
-	quitfunc->function();
+	exit(-1);
 }
