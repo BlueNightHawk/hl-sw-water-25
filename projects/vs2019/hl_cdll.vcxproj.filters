@@ -354,6 +354,9 @@
     <ClCompile Include="..\..\cl_dll\cvar_hooks.cpp">
       <Filter>Source Files\hawk</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\cl_dll\sigscanner_win32.cpp">
+      <Filter>Source Files\hawk</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\cl_dll\kbutton.h">
