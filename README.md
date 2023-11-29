@@ -1,5 +1,3 @@
-![](https://i.imgur.com/yVGryqu.gif)
-
 Software Mode Water
 ======================
 Updated for the latest post-25th anniversary build.
