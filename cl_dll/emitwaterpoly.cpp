@@ -45,13 +45,10 @@ void CL_EmitWaterPolys(msurface_t* fa, int direction)
 	cl_entity_t* currententity = IEngineStudio.GetCurrentEntity();
 	float time = gEngfuncs.GetClientTime();
 
-	float texturescale;
 	float *v, nv, waveHeight;
 	float s, t, os, ot;
 	glpoly_t* p;
 	int i;
-
-	texturescale = R_GetRippleTextureScale();
 
 	// set the current waveheight
 	if (fa->polys->verts[0][2] >= gHUD.refparams.vieworg[2])
@@ -89,8 +86,8 @@ void CL_EmitWaterPolys(msurface_t* fa, int direction)
 			}
 			else
 			{
-				s = os / texturescale;
-				t = ot / texturescale;
+				s = os / g_ripple.texturescale;
+				t = ot / g_ripple.texturescale;
 			}
 
 			s *= (1.0f / SUBDIVIDE_SIZE);
