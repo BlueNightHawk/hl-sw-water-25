@@ -1,3 +1,5 @@
+![](https://github.com/BlueNightHawk/hl-sw-water-25/tree/master/assets/water.gif)
+
 Software Mode Water
 ======================
 Updated for the latest post-25th anniversary build.
