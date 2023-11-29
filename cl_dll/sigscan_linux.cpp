@@ -35,14 +35,6 @@ SOFTWARE.
 #include <fcntl.h>
 #include <gelf.h>
 
-#include <unordered_map>
-#include <string_view>
-
-typedef DWORD u32;
-
-u32 engineAddr = 0;
-std::unordered_map<std::string_view, u32> engineSymbols;
-
 bool getModuleAddress(const char* lib, u32* startOfModule, u32* endOfModule = nullptr);
 
 void readSymbols(const char* lib, std::unordered_map<std::string_view, u32>& symbols)
@@ -111,8 +103,11 @@ bool getModuleAddress(const char* lib, u32* startOfModule, u32* endOfModule)
 	return false;
 }
 
-u32 getEngineSymbol(const char* symbol)
+u32 SigScan::getEngineSymbol(const char* symbol)
 {
+	if(engineSymbols[symbol] == 0)
+		return 0;
+
 	return engineSymbols[symbol] + engineAddr;
 }
 
@@ -128,10 +123,10 @@ bool SigScan::GetModuleInfo(char* szModule)
 
 void SigScan::FindFunction(DWORD* result, Pattern pattern)
 {
-	void *ptr = getEngineSymbol(pattern.name);
+	auto sym = getEngineSymbol(pattern.name);
 
-	if (!ptr)
+	if (sym == 0)
 		Sys_Error("Could not find function : %s", pattern.name);
 
-	*result = (DWORD)ptr;
+	*result = (DWORD)sym;
 }

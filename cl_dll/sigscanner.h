@@ -3,12 +3,16 @@
 #include <string>
 #ifdef WIN32
 #include <Psapi.h>
+#else
+#include <unordered_map>
+#include <string_view>
 #endif
 #include "patterns.h"
 #include <assert.h>
 
 #ifndef WIN32
 typedef unsigned long DWORD;
+typedef DWORD u32;
 #endif
 
 class SigScan
@@ -19,6 +23,10 @@ private:
 	DWORD size;
 #else
 	void* base;
+	u32 engineAddr = 0;
+	std::unordered_map<std::string_view, u32> engineSymbols;
+
+	u32 getEngineSymbol(const char* symbol);
 #endif
 
 public:

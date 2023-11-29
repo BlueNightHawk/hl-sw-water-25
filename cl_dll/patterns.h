@@ -4,7 +4,6 @@ class Pattern
 {
 public:
 	// Will only support latest engine build
-	// Except for steam_legacy
 	const char* name;
 	const char* pattern;
 	const char* mask;
