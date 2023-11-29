@@ -1,4 +1,4 @@
-![](https://github.com/BlueNightHawk/hl-sw-water-25/assets/water.gif)
+![](https://github.com/BlueNightHawk/hl-sw-water-25/blob/master/assets/water.gif)
 
 Software Mode Water
 ======================
