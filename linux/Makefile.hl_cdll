@@ -17,9 +17,9 @@ PM_SHARED_OBJ_DIR=$(HL1_OBJ_DIR)/pm_shared
 
 CFLAGS=$(BASE_CFLAGS) $(ARCH_CFLAGS) -DCLIENT_DLL
 
-INCLUDEDIRS=-I$(HL_SRC_DIR) -I$(HL_PARTICLEMAN_DIR) -I../dlls -I/usr/include/malloc -I$(COMMON_SRC_DIR) -I$(PUBLIC_SRC_DIR) -I../pm_shared -I../engine -I../utils/vgui/include -I../game_shared -I../external
+INCLUDEDIRS=-I$(HL_SRC_DIR) -I$(HL_PARTICLEMAN_DIR) -I../dlls -I/usr/include/malloc -I$(COMMON_SRC_DIR) -I$(PUBLIC_SRC_DIR) -I../pm_shared -I../engine -I../utils/vgui/include -I../game_shared -I../external -I../external/SDL2 -I../external/funchook
 
-LDFLAGS=$(SHLIBLDFLAGS) $(CPP_LIB) -L$(CFG) vgui.so -L. libSDL2-2.0.so.0
+LDFLAGS=$(SHLIBLDFLAGS) $(CPP_LIB) -L$(CFG) vgui.so -L. libSDL2-2.0.so.0 -L. libfunchook.a -L. libdistorm.a -lGL -lelf
 
 DO_CC=$(CPLUS) $(INCLUDEDIRS) $(CFLAGS) -o $@ -c $<
 
@@ -77,6 +77,14 @@ HL1_OBJS = \
 	$(HL1_OBJ_DIR)/vgui_SpectatorPanel.o \
 	$(HL1_OBJ_DIR)/vgui_teammenu.o \
 	$(HL1_OBJ_DIR)/voice_status.o \
+	$(HL1_OBJ_DIR)/r_ripples.o \
+	$(HL1_OBJ_DIR)/cmd_function.o \
+	$(HL1_OBJ_DIR)/cvar_hooks.o \
+	$(HL1_OBJ_DIR)/emitwaterpoly.o \
+	$(HL1_OBJ_DIR)/funchook.o \
+	$(HL1_OBJ_DIR)/gl_hooks.o \
+	$(HL1_OBJ_DIR)/hooks.o \
+	$(HL1_OBJ_DIR)/sigscan_linux.o \
 
 HL1_PARTICLEMAN_OBJS = \
 	$(HL1_PARTICLEMAN_OBJ_DIR)/CBaseParticle.o \

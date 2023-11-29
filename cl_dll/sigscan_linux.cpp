@@ -26,6 +26,7 @@ SOFTWARE.
 #include "hooks.h"
 #include "sigscanner.h"
 
+#include <dlfcn.h>
 #include <stdio.h>
 #include <string.h>
 #include <limits.h>
@@ -37,10 +38,12 @@ SOFTWARE.
 #include <unordered_map>
 #include <string_view>
 
-#include "types.h"
+typedef DWORD u32;
 
 u32 engineAddr = 0;
 std::unordered_map<std::string_view, u32> engineSymbols;
+
+bool getModuleAddress(const char* lib, u32* startOfModule, u32* endOfModule = nullptr);
 
 void readSymbols(const char* lib, std::unordered_map<std::string_view, u32>& symbols)
 {
@@ -116,9 +119,9 @@ u32 getEngineSymbol(const char* symbol)
 // For getting information about the executing module
 bool SigScan::GetModuleInfo(char* szModule)
 {
-	base = (void*)dlopen(engineDLL, RTLD_NOW);
-	readSymbols(engineDLL, engineSymbols);
-	getModuleAddress(engineDLL, &engineAddr);
+	base = (void*)dlopen(szModule, RTLD_NOW);
+	readSymbols(szModule, engineSymbols);
+	getModuleAddress(szModule, &engineAddr);
 
 	return base != nullptr;
 }
