@@ -25,8 +25,9 @@ void SigScan::FindFunction(DWORD* result, Pattern pattern)
 	if (!strstr(version, pattern.build))
 	{
 		Sys_Error("Engine build version mismatch for pattern : %s!\n"
+				  "Pattern version: %s, Current version : %s.\n"
 				  "Update to newer version of the mod if available.",
-			pattern.name);
+			pattern.name, pattern.build, version);
 		return;
 	}
 
