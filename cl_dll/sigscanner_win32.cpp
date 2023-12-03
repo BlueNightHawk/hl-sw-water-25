@@ -24,11 +24,10 @@ void SigScan::FindFunction(DWORD* result, Pattern pattern)
 
 	if (!strstr(version, pattern.build))
 	{
-		Sys_Error("Engine build version mismatch for pattern : %s!\n"
-				  "Pattern version: %s, Current version : %s.\n"
-				  "Update to newer version of the mod if available.",
+		gEngfuncs.Con_DPrintf("WARINING! Engine build version mismatch for pattern : %s!\n"
+							 "Pattern version: %s, Current version : %s.\n"
+							 "Update to newer version of the mod if available.",
 			pattern.name, pattern.build, version);
-		return;
 	}
 
 	auto patternLength = strlen(pattern.mask);

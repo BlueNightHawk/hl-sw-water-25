@@ -4,6 +4,12 @@
 
 CFunchook* HwHooks;
 
+#ifdef WIN32
+#define LIBNAME "hw.dll"
+#else
+#define LIBNAME "hw.so"
+#endif
+
 void InitWaterHook()
 {
 	g_HwScan.FindFunction((DWORD*)&pEmitWaterPolys, patterns::EmitWaterPolys);
@@ -21,14 +27,10 @@ void InitHooks()
 {
 	HwHooks = g_HookMgr.CreateHook();
 
-#ifdef WIN32
-	auto result = g_HwScan.GetModuleInfo("hw.dll");
-#else
-	auto result = g_HwScan.GetModuleInfo("hw.so");
-#endif
+	auto result = g_HwScan.GetModuleInfo(LIBNAME);
 
 	if (!result)
-		Sys_Error("Could not get hw.dll module info!");
+		Sys_Error("Could not get " LIBNAME " module info!");
 
 	InitWaterHook();
 
